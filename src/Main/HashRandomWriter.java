@@ -1,5 +1,6 @@
 package Main;
 
+
 // BinaryRandomWriter.java
 // ******************************************************************
 // This program under development *will* [eventually] generate random
@@ -21,9 +22,13 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Random;
+import java.util.Scanner;
+import java.util.HashMap;;
 
-public class BinaryRandomWriter {
+public class HashRandomWriter {
 
     public static void main(String[] args) throws IOException {
 
@@ -43,7 +48,7 @@ public class BinaryRandomWriter {
         long stopTime;  //elapsed time is difference in millisec
         Random rand = new Random();
 
-        java.net.URL inputUrl = BinaryRandomWriter.class.getResource(sourceFileName);
+        java.net.URL inputUrl = HashRandomWriter.class.getResource(sourceFileName);
 
         //Data structure declarations go here
         //...........
@@ -54,7 +59,7 @@ public class BinaryRandomWriter {
         LinkedList<String> follows = new LinkedList<String>();
 
         //BST of Unique as the Key, and Follows LL as the Value
-        TreeMap<String, LinkedList<String>> bstRand = new TreeMap<String, LinkedList<String>>();
+        HashMap<String, LinkedList<String>> hashRand = new HashMap<String, LinkedList<String>>();
 
         //Prepare files
         Scanner dataFile = new Scanner(new FileReader(new File(inputUrl.getPath())));
@@ -66,17 +71,19 @@ public class BinaryRandomWriter {
         startTime = System.currentTimeMillis();
         while (dataFile.hasNext()) {
             secondWord = dataFile.next();
-            if (!(bstRand.containsKey(firstWord))) { //new unique word
+            if (!hashRand.containsKey(firstWord)) { //new unique word
                 nWords++;
                 if (rand.nextInt(nWords) == 0) firstRandomWord = firstWord;
                 //create new linked followlist
-                unique.add(firstWord); // assume that unique and follows have the same length
+                unique.add(firstWord);
+//                follows.add(secondWord);
                 follows.add(unique.indexOf(firstWord), secondWord);
-                bstRand.put(firstWord, follows);
+                hashRand.put(firstWord, follows);
             }
+
             firstWord = secondWord;
         }
-        bstRand.put(firstWord, follows);  //Last word points to the follow LL of the first word
+        hashRand.put(firstWord, follows);  //Last word points to the follow LL of the first word
         unique.add(firstWord);
         System.out.println("Last word in the file: " + firstWord); //Is our calculated last word the actual last word?
 
@@ -92,7 +99,7 @@ public class BinaryRandomWriter {
         firstWord = firstRandomWord;
 
         for (int i = 0; i < N; i++) {
-            LinkedList<String> LL = bstRand.get(firstWord);
+            LinkedList<String> LL = hashRand.get(firstWord);
             int nrn = 0;
             if (LL.size() > 1)
                 nrn = rand.nextInt(LL.size() - 1); //Only try to compute a random number if LL has more than 1 element

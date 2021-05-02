@@ -64,6 +64,8 @@ public class ArrayListRandomWriter {
             follows.get(unique.indexOf(firstWord)).add(secondWord); //Add the following word to it's corresponding LL in follows
 
 
+
+
             firstWord = secondWord;
         }
         unique.add(firstWord);
@@ -95,7 +97,7 @@ public class ArrayListRandomWriter {
             secondWord = LL.get(nrn);
             firstWord = unique.get(unique.indexOf(secondWord));
             outFile.print(secondWord + " ");
-            System.out.println("Next random number: " + nrn);
+//            System.out.println("Next random number: " + nrn);
         }
 
         outFile.flush();
