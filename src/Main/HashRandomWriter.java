@@ -79,9 +79,8 @@ public class HashRandomWriter {
                 follows.add(secondWord);
                 hashRand.put(firstWord, new LinkedList<>());
             }
-            LinkedList<String> follow_of_this = hashRand.get(firstWord);
-            follow_of_this.add(secondWord);
-            hashRand.put(firstWord, follow_of_this);
+            hashRand.get(firstWord).add(secondWord);
+            hashRand.put(firstWord, hashRand.get(firstWord));
 
             firstWord = secondWord;
         }
