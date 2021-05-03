@@ -71,11 +71,12 @@ public class BinaryRandomWriter {
                 if (rand.nextInt(nWords) == 0) firstRandomWord = firstWord;
                 //create new linked followlist
                 unique.add(firstWord); // assume that unique and follows have the same length
-                follows.add(unique.indexOf(firstWord), secondWord);
+                follows.add(secondWord);
                 bstRand.put(firstWord, new LinkedList<>());
             }
-
-            bstRand.put(firstWord, bstRand.get(firstWord));
+            LinkedList<String> follow_of_this = bstRand.get(firstWord);
+            follow_of_this.add(secondWord);
+            bstRand.put(firstWord, follow_of_this);
             firstWord = secondWord;
         }
 //        bstRand.put(firstWord, follows);  //Last word points to the follow LL of the first wordunique.add(firstWord);
