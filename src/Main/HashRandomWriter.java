@@ -80,7 +80,7 @@ public class HashRandomWriter {
                 hashRand.put(firstWord, new LinkedList<>());
             }
             hashRand.get(firstWord).add(secondWord);
-            hashRand.put(firstWord, hashRand.get(firstWord));
+//            hashRand.put(firstWord, hashRand.get(firstWord));
 
             firstWord = secondWord;
         }

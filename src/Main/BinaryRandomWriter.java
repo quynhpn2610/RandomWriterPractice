@@ -64,6 +64,8 @@ public class BinaryRandomWriter {
         String secondWord;
         String firstRandomWord = "";
         startTime = System.currentTimeMillis();
+
+
         while (dataFile.hasNext()) {
             secondWord = dataFile.next();
             if (!(bstRand.containsKey(firstWord))) { //new unique word
@@ -75,9 +77,11 @@ public class BinaryRandomWriter {
                 bstRand.put(firstWord, new LinkedList<>());
             }
             bstRand.get(firstWord).add(secondWord);
-            bstRand.put(firstWord, bstRand.get(firstWord));
+//            bstRand.put(firstWord, bstRand.get(firstWord));
             firstWord = secondWord;
         }
+
+
 //        bstRand.put(firstWord, follows);  //Last word points to the follow LL of the first wordunique.add(firstWord);
         System.out.println("Last word in the file: " + firstWord); //Is our calculated last word the actual last word?
 
