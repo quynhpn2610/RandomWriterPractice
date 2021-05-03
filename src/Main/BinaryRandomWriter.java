@@ -74,9 +74,8 @@ public class BinaryRandomWriter {
                 follows.add(secondWord);
                 bstRand.put(firstWord, new LinkedList<>());
             }
-            LinkedList<String> follow_of_this = bstRand.get(firstWord);
-            follow_of_this.add(secondWord);
-            bstRand.put(firstWord, follow_of_this);
+            bstRand.get(firstWord).add(secondWord);
+            bstRand.put(firstWord, bstRand.get(firstWord));
             firstWord = secondWord;
         }
 //        bstRand.put(firstWord, follows);  //Last word points to the follow LL of the first wordunique.add(firstWord);
