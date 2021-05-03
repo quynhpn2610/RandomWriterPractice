@@ -24,9 +24,7 @@ import java.io.PrintWriter;
 import java.util.*;
 
 public class BinaryRandomWriter {
-
-    public static void main(String[] args) throws IOException {
-
+    public void writer() throws IOException {
         Scanner reader = new Scanner(System.in);
         //Get file name arguments from command line or interactively as entered by user
 
@@ -49,14 +47,15 @@ public class BinaryRandomWriter {
         //...........
 
         //An ArrayList of unique words/Strings
-        ArrayList<String> unique = new ArrayList<String>();
+        ArrayList<String> unique = new ArrayList<>();
 
-        LinkedList<String> follows = new LinkedList<String>();
+        LinkedList<String> follows = new LinkedList<>();
 
         //BST of Unique as the Key, and Follows LL as the Value
-        TreeMap<String, LinkedList<String>> bstRand = new TreeMap<String, LinkedList<String>>();
+        TreeMap<String, LinkedList<String>> bstRand = new TreeMap<>();
 
         //Prepare files
+        assert inputUrl != null;
         Scanner dataFile = new Scanner(new FileReader(new File(inputUrl.getPath())));
         PrintWriter outFile = new PrintWriter(new FileWriter(resultFileName));
         //Read a line from the source file until end of file
@@ -112,8 +111,6 @@ public class BinaryRandomWriter {
         stopTime = System.currentTimeMillis();
         System.out.println("Elapsed output time = " + (stopTime - startTime) + " msecs.");
     }
-
-
 }
 
 

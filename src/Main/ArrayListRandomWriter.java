@@ -13,7 +13,7 @@ import java.util.Scanner;
 
 public class ArrayListRandomWriter {
 
-    public static void main(String[] args) throws IOException {
+    public void writer() throws IOException {
         Scanner reader = new Scanner(System.in);
         //Get file name arguments from command line or interactively as entered by user
 
@@ -34,16 +34,15 @@ public class ArrayListRandomWriter {
 
         //Data structure declarations go here
         //...........
-        //this is a simple linked list of all words (strings)
-        LinkedList<String> words = new LinkedList<String>();
 
         //An ArrayList of unique words/Strings
-        ArrayList<String> unique = new ArrayList<String>();
+        ArrayList<String> unique = new ArrayList<>();
 
         //An ArrayList of LLs of all the words that follow those unique words
-        ArrayList<LinkedList<String>> follows = new ArrayList<LinkedList<String>>();
+        ArrayList<LinkedList<String>> follows = new ArrayList<>();
 
         //Prepare files
+        assert inputUrl != null;
         Scanner dataFile = new Scanner(new FileReader(new File(inputUrl.getPath())));
         PrintWriter outFile = new PrintWriter(new FileWriter(resultFileName));
         //Read a line from the source file until end of file
@@ -59,7 +58,7 @@ public class ArrayListRandomWriter {
 
             if (!(unique.contains(firstWord))) {
                 unique.add(firstWord); //Adding unique words to unique LL
-                follows.add(unique.indexOf(firstWord), new LinkedList<String>()); //Making a LL for that word in follows, even if the next word is unique
+                follows.add(unique.indexOf(firstWord), new LinkedList<>()); //Making a LL for that word in follows, even if the next word is unique
             }
             follows.get(unique.indexOf(firstWord)).add(secondWord); //Add the following word to it's corresponding LL in follows
 
