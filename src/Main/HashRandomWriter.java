@@ -26,12 +26,11 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Random;
 import java.util.Scanner;
-import java.util.HashMap;;
+import java.util.HashMap;
 
 public class HashRandomWriter {
 
-    public static void main(String[] args) throws IOException {
-
+    public void writer() throws IOException {
         Scanner reader = new Scanner(System.in);
         //Get file name arguments from command line or interactively as entered by user
 
@@ -54,14 +53,15 @@ public class HashRandomWriter {
         //...........
 
         //An ArrayList of unique words/Strings
-        ArrayList<String> unique = new ArrayList<String>();
+        ArrayList<String> unique = new ArrayList<>();
 
-        LinkedList<String> follows = new LinkedList<String>();
+        LinkedList<String> follows = new LinkedList<>();
 
         //BST of Unique as the Key, and Follows LL as the Value
-        HashMap<String, LinkedList<String>> hashRand = new HashMap<String, LinkedList<String>>();
+        HashMap<String, LinkedList<String>> hashRand = new HashMap<>();
 
         //Prepare files
+        assert inputUrl != null;
         Scanner dataFile = new Scanner(new FileReader(new File(inputUrl.getPath())));
         PrintWriter outFile = new PrintWriter(new FileWriter(resultFileName));
         //Read a line from the source file until end of file
@@ -115,8 +115,6 @@ public class HashRandomWriter {
         stopTime = System.currentTimeMillis();
         System.out.println("Elapsed output time = " + (stopTime - startTime) + " msecs.");
     }
-
-
 }
 
 
