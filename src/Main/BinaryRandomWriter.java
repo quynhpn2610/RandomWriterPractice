@@ -72,12 +72,13 @@ public class BinaryRandomWriter {
                 //create new linked followlist
                 unique.add(firstWord); // assume that unique and follows have the same length
                 follows.add(unique.indexOf(firstWord), secondWord);
-                bstRand.put(firstWord, follows);
+                bstRand.put(firstWord, new LinkedList<>());
             }
+
+            bstRand.put(firstWord, bstRand.get(firstWord));
             firstWord = secondWord;
         }
-        bstRand.put(firstWord, follows);  //Last word points to the follow LL of the first word
-        unique.add(firstWord);
+//        bstRand.put(firstWord, follows);  //Last word points to the follow LL of the first wordunique.add(firstWord);
         System.out.println("Last word in the file: " + firstWord); //Is our calculated last word the actual last word?
 
         stopTime = System.currentTimeMillis();
