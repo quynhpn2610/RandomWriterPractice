@@ -63,9 +63,6 @@ public class ArrayListRandomWriter {
             }
             follows.get(unique.indexOf(firstWord)).add(secondWord); //Add the following word to it's corresponding LL in follows
 
-
-
-
             firstWord = secondWord;
         }
         unique.add(firstWord);
