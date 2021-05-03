@@ -76,10 +76,11 @@ public class HashRandomWriter {
                 if (rand.nextInt(nWords) == 0) firstRandomWord = firstWord;
                 //create new linked followlist
                 unique.add(firstWord);
-//                follows.add(secondWord);
-                follows.add(unique.indexOf(firstWord), secondWord);
-                hashRand.put(firstWord, follows);
+                follows.add(secondWord);
+                hashRand.put(firstWord, new LinkedList<>());
             }
+            hashRand.get(firstWord).add(secondWord);
+            hashRand.put(firstWord, hashRand.get(firstWord));
 
             firstWord = secondWord;
         }

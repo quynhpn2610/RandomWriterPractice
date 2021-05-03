@@ -1,1 +1,10 @@
 a car a bike a house nice food good job
+
+map = {
+
+a -> [car],
+car -> [a]
+}
+follow of this = [car]
+follow of this.add(bike) -> [car, bike]
+a -> [car,bike]
